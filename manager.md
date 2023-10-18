@@ -8,6 +8,9 @@
 | Manager-SubmitContract-4       | Core       | Submit a Contract with a ServicePublicationGrant                                        |
 | Manager-SubmitContract-5       | Delegation | Submit a Contract with a DelegatedServicePublicationGrant                               |
 | Manager-SubmitContract-6       | Delegation | Submit a Contract with a DelegatedServiceConnectionGrant                                |
+| Manager-SubmitContract-7       | Core       | Submit a Contract with a PeerRegistrationGrant combined with any another grant          |
+| Manager-SubmitContract-8       | Core       | Submit a Contract with multiple PeerRegistrationGrants                                       |
+| Manager-SubmitContract-9       | Core       | Submit a Contract with a ServicePublicationGrant combined with any another grant          |
 | Manager-AcceptContract-1       | Core       | Place accept signature on a Contract                                                    |
 | Manager-AcceptContract-2       | Core       | Place accept signature on a Contract without being a Peer on the Contract               |
 | Manager-AcceptContract-3       | Core       | Place accept signature with an incorrect Contract Hash                                  | 
@@ -73,6 +76,23 @@ Then the Contract should be accepted
 Scenario: Submit a Contract
 When a Contract with a DelegatedServiceConnectionGrant is submitted by the Peer
 Then the Contract should be accepted
+
+# Manager-SubmitContract-7
+
+Scenario: Submit a Contract with a PeerRegistrationGrant and any other Grant
+When a Contract is submitted by the Peer
+Then the Contract should be rejected
+
+# Manager-SubmitContract-8
+Scenario: Submit a Contract with multiple PeerRegistrationGrants
+When a Contract is submitted by the Peer
+Then the Contract should be rejected
+
+# Manager-SubmitContract-9
+
+Scenario: Submit a Contract with a ServicePublicationGrant and any other Grant
+When a Contract is submitted by the Peer
+Then the Contract should be rejected
 
 # Manager-AcceptContract-1
 
