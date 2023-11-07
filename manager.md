@@ -16,17 +16,17 @@
 | Manager-AcceptContract-2       | Core       | Place accept signature on a Contract without being a Peer on the Contract                        |
 | Manager-AcceptContract-3       | Core       | Place accept signature with an incorrect Contract Hash                                           | 
 | Manager-AcceptContract-4       | Core       | Place accept signature on a Contract with a signature type that is not accept                    |
-| Manager-AcceptContract-5       | Core       | Place accept signature on a non-existing Contract                                                |
+| Manager-AcceptContract-5       | Core       | The hash in the request URL does not match with the contract hash of the contract in the request body        |
 | Manager-RejectContract-1       | Core       | Place reject signature on a Contract                                                             |
 | Manager-RejectContract-2       | Core       | Place reject signature on a Contract without being a Peer on the Contract                        |
 | Manager-RejectContract-3       | Core       | Place reject signature with an incorrect Contract Hash                                           | 
 | Manager-RejectContract-4       | Core       | Place reject signature on a Contract with a signature type that is not reject                    |
-| Manager-RejectContract-5       | Core       | Place reject signature on a non-existing Contract                                                |
+| Manager-RejectContract-5       | Core       | The hash in the request URL does not match with the contract hash of the contract in the request body        |
 | Manager-RevokeContract-1       | Core       | Place revoke signature on a Contract                                                             |
 | Manager-RevokeContract-2       | Core       | Place revoke signature on a Contract without being a Peer on the Contract                        |
 | Manager-RevokeContract-3       | Core       | Place revoke signature with an incorrect Contract Hash                                           | 
 | Manager-RevokeContract-4       | Core       | Place revoke signature on a Contract with a signature type that is not revoke                    |
-| Manager-RevokeContract-5       | Core       | Place revoke signature on a non-existing Contract                                                |
+| Manager-RevokeContract-5       | Core       | The hash in the request URL does not match with the contract hash of the contract in the request body        |
 | Manager-Contracts-1            | Core       | List Contracts                                                                                   |
 | Manager-Contracts-2            | Core       | Do not list Contracts which do not contain the Peer                                              |
 | Manager-GetToken-1             | Core       | Request access token with a valid Contract                                                       |
@@ -131,8 +131,9 @@ Then the signature should be rejected
 
 # Manager-AcceptContract-5
 
-Scenario: Place accept signature on a non-existing Contract   
-When the Peer submits an accept signature for a Contract that does not exist
+Scenario: The hash in the request URL does not match with the contract hash of the contract in the request body
+When the Peer submits an accept signature using a contract content hash in the request URL that does not match 
+the contract content hash of the contract in the request body
 Then the signature should be rejected
 
 # Manager-RejectContract-1
@@ -165,8 +166,9 @@ Then the signature should be rejected
 
 # Manager-RejectContract-5
 
-Scenario: Place reject signature on a non-existing Contract
-When the Peer submits a reject signature for a Contract that does not exist
+Scenario: The hash in the request URL does not match with the contract hash of the contract in the request body
+When the Peer submits an reject signature using a contract content hash in the request URL that does not match 
+the contract content hash of the contract in the request body
 Then the signature should be rejected
 
 # Manager-RevokeContract-1
@@ -199,9 +201,10 @@ Then the signature should be rejected
 
 # Manager-RevokeContract-5
 
-Scenario: Place revoke signature on a non-existing Contract
-When the Peer submits a revoke signature for a Contract that does not exist
-Then the signature should be rejected
+Scenario: The hash in the request URL does not match with the contract hash of the contract in the request body
+When the Peer submits an revoke signature using a contract content hash in the request URL that does not match 
+the contract content hash of the contract in the request body
+Then the signature should be revoked
 
 # Manager-Contracts-1
 
