@@ -14,9 +14,10 @@
 | Manager-SubmitContract-10      | Core       | Submit a Contract with a Group ID that does not match with the Group ID of the receiving Manager |
 | Manager-AcceptContract-1       | Core       | Place accept signature on a Contract                                                             |
 | Manager-AcceptContract-2       | Core       | Place accept signature on a Contract without being a Peer on the Contract                        |
-| Manager-AcceptContract-3       | Core       | Place accept signature with an incorrect Contract Hash                                           | 
-| Manager-AcceptContract-4       | Core       | Place accept signature on a Contract with a signature type that is not accept                    |
-| Manager-AcceptContract-5       | Core       | The hash in the request URL does not match with the contract hash of the contract in the request body        |
+| Manager-AcceptContract-3       | Core       | Place accept signature which is not a valid JWS
+| Manager-AcceptContract-4       | Core       | Place an accept signature of which the content hash does not match the contract content you are accepting
+| Manager-AcceptContract-5       | Core       | Place accept signature on a Contract with a signature type that is not accept                    |
+| Manager-AcceptContract-6       | Core       | The hash in the request URL does not match with the contract hash of the contract in the request body        |
 | Manager-RejectContract-1       | Core       | Place reject signature on a Contract                                                             |
 | Manager-RejectContract-2       | Core       | Place reject signature on a Contract without being a Peer on the Contract                        |
 | Manager-RejectContract-3       | Core       | Place reject signature with an incorrect Contract Hash                                           | 
