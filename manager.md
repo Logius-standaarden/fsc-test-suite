@@ -32,8 +32,10 @@
 | Manager-GetToken-1             | Core       | Request access token with a valid Contract                                                       |
 | Manager-GetToken-2             | Core       | Request access token without a valid Contract                                                    |
 | Manager-GetToken-3             | Core       | Request access token when the Contract has been revoked                                          |
-| Manager-GetToken-4             | Delegation | Request access token with a valid Contract containing a DelegatedServiceConnectionGrant          |
-| Manager-GetToken-5             | Delegation | Request access token for a Service offered on behalf of a another Peer                           |
+| Manager-GetToken-4             | Core       | Request access token with a Grant Hash that is in a invalid format                               |
+| Manager-GetToken-5             | Core       | Request access token with an grant type that is not client_credentials                           |
+| Manager-GetToken-6             | Delegation | Request access token with a valid Contract containing a DelegatedServiceConnectionGrant          |
+| Manager-GetToken-7             | Delegation | Request access token for a Service offered on behalf of a another Peer                           |
 | Manager-PeerInfo-1             | Core       | Get Peer information                                                                             |
 | Manager-Peers-1                | Core       | List Peers with a valid Contract containing a PeerRegistrationGrant                              |
 | Manager-Peers-2                | Core       | List Peers with whom Contracts have been negotiated                                              |
@@ -242,12 +244,24 @@ Then an access token containing the Delegator should be returned
 
 # Manager-GetToken-4
 
+Scenario: Request access token with a Grant Hash that is in an invalid format       
+When the Peer requests an access token with a Grant Hash that is in an invalid format
+Then an access token request should be rejected
+
+# Manager-GetToken-5
+
+Scenario: Request access token with a grant type that is not client_credentials
+When the Peer requests an access token with a grant type that is not client_credentials
+Then an access token request should be rejected
+
+# Manager-GetToken-6
+
 Scenario: Request access token with a valid Contract containing a DelegatedServiceConnectionGrant    
 Given a valid Contract exists with a DelegatedServiceConnectionGrant containing the Peer
 When the Peer requests an access token
 Then an access token containing the Delegator should be returned
 
-# Manager-GetToken-5
+# Manager-GetToken-7
 
 Scenario: Request access token for a Service offered on behalf of another Peer
 Given a valid Contract exists with a ServiceConnectionGrant containing the Peer
