@@ -7,6 +7,7 @@
 | Inway-Incoming-Request-3 | Core                | Receive a request with an access token bound to a different certificate                     |
 | Inway-Incoming-Request-4 | Core                | Receive a request with an untrusted certificate                                             |
 | Inway-Incoming-Request-5 | Core                | Preserve access token                                                                       | 
+| Inway-Incoming-Request-6 | Core                | Receive a request with an expired access token                                              | 
 | Inway-TransactionLog-1   | Logging             | Create a TransactionLog record for a received request                                       |
 | Inway-TransactionLog-2   | Logging             | Preserve TransactionID                                                                      |
 | Inway-TransactionLog-3   | Logging             | Reject request without a TransactionID                                                      |
@@ -46,6 +47,12 @@ Then the request should be denied
 Scenario: Preserve access token 
 When a request with a valid access token is received
 Then the access token should be received by the Service
+
+# Inway-Incoming-Request-6
+
+Scenario: Receive a request with an expired access token
+When a request is with an expired access token received
+Then the request should be denied
 
 # Inway-TransactionLog-1
 
