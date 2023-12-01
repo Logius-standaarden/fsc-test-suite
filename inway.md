@@ -13,6 +13,7 @@
 | Inway-TransactionLog-3   | Logging             | Reject request without a TransactionID                                                      |
 | Inway-TransactionLog-4   | Logging, Delegation | Create a TransactionLog record for a request made on behalf of another Peer                 |
 | Inway-TransactionLog-5   | Logging, Delegation | Create a TransactionLog record for a request to a Service offered on behalf of another Peer |
+| Inway-TransactionLog-6   | Logging             | An error occured while writing to the transaction log                                       |
 | Inway-Port-1             | Core                | Accept request on port 443 or 8443                                                          |
 
 
@@ -86,6 +87,13 @@ Scenario: Create a TransactionLog record for a request made on behalf of another
 Given the Service is being offered on behalf of another Peer
 When a request with a valid access token is received
 Then the Inway should write a TransactionLog for the request in which the destination contains the Delegator
+
+# Inway-TransactionLog-6
+
+Scenario: An error occurs while writing to the transaction log
+Given the transaction log is not in working order
+When a request with a valid access token is received
+Then the Inway should try to write to the transaction log and upon receiving an error from the transaction log the Inway must respond with an error and not invoke the Service
 
 # Inway-Port-1
 
