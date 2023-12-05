@@ -54,14 +54,14 @@
 # Manager-SubmitContract-1
 
 Scenario: Submit a Contract
-When a Contract with a ServiceConnectionGrant is submitted by the Peer
-Then the Contract should be accepted
+When a valid Contract with a ServiceConnection Grant is submitted
+Then the Manager should return a success response
 
 # Manager-SubmitContract-2
 
 Scenario: Submit a Contract without being a Peer on the Contract
 When a Contract is submitted by the Peer which does not include the Peer
-Then the Contract should be rejected
+Then the Contract should not be stored by the Manager
 
 # Manager-SubmitContract-3
 
