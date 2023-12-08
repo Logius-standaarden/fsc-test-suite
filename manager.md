@@ -44,8 +44,7 @@
 | Manager-GetToken-6             | Delegation | Request access token with a valid Contract containing a DelegatedServiceConnectionGrant                                             |
 | Manager-GetToken-7             | Delegation | Request access token for a Service offered on behalf of a another Peer                                                              |
 | Manager-PeerInfo-1             | Core       | Get Peer information                                                                                                                |
-| Manager-Peers-1                | Core       | List Peers with a valid Contract containing a PeerRegistrationGrant                                                                 |
-| Manager-Peers-2                | Core       | List Peers with whom Contracts have been negotiated                                                                                 |
+| Manager-Peers-1                | Core       | List Peers that are known by the manager (via announcement or submitting contracts)                                                 |
 | Manager-Services-1             | Core       | List Services with a valid Contract containing a ServicePublicationGrant                                                            |
 | Manager-TransactionLogRecord-1 | Logging    | List Transaction Log records                                                                                                        |
 | Manager-Port-1                 | Core       | Accept request on port 443 or 8443                                                                                                  |
@@ -329,17 +328,10 @@ Then the information about the Peer hosting the Manager should be returned
 
 # Manager-Peers-1
 
-Scenario: List Peers with a valid Contract containing a PeerRegistrationGrant
-Given a valid Contract exists containing a PeerRegistrationGrant
+Scenario: List Peers who are known by the Manager
+Given Peer(s) have announced themselves to the Manager
 When the Peers endpoint is called
-Then the Peer described in the PeerRegistrationGrant should be returned
-
-# Manager-Peers-2
-
-Scenario: List Peers with whom Contracts have been negotiated          
-Given a Peer has negotiated Contracts with Peers
-When the Peers endpoint is called
-Then the Peers with whom Contracts where negotiated should be returned
+Then the Peers that have announced themselves to the Manager should be returned
 
 # Manager-Services-1
 
