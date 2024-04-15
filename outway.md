@@ -9,27 +9,27 @@
 | Outway-TransactionLog-2  | Logging             | Add a TransactionID                                                                         |
 | Outway-TransactionLog-3  | Logging, Delegation | Create a TransactionLog record for a request made on behalf of another Peer                 |
 | Outway-TransactionLog-4  | Logging, Delegation | Create a TransactionLog record for a request to a Service offered on behalf of another Peer |
-| Outway-TransactionLog-5  | Logging | An error occured while writing to the TransactionLog                                        |
+| Outway-TransactionLog-5  | Logging             | An error occurred while writing to the TransactionLog                                       |
 
 # Outway-IncomingRequest-1
 
 Scenario: The Outway receives a request and is able to proxy this request to the Inway providing the service
 Given a valid contract with a ServiceConnectionGrant for the Peer exists
-When a request is received the outway is able to obtain a valid accessToken based on the ServiceConnectionGrant
+When a request is received the Outway is able to obtain a valid accessToken based on the ServiceConnectionGrant
 Then the request is sent to the Inway and the response from the Inway is received by the Outway
 
 # Outway-IncomingRequest-2
 
 Scenario: The Outway receives a request and is unable to obtain a valid access token
 Given a valid contract with a ServiceConnectionGrant for the Peer does not exist
-When a request is received the outway is not able to obtain a valid accessToken based on the ServiceConnectionGrant
+When a request is received the Outway is not able to obtain a valid accessToken based on the ServiceConnectionGrant
 Then the request is not sent to the Inway, the Outway returns an error
 
 # Outway-IncomingRequest-3
 
 Scenario: The Outway receives a request and is unable to reach the Inway
 Given a valid contract with a ServiceConnectionGrant for the Peer exist
-When a request is received the outway is able to obtain a valid accessToken based on the ServiceConnectionGrant
+When a request is received the Outway is able to obtain a valid accessToken based on the ServiceConnectionGrant
 Then the request is sent to the Inway who is unreachable, the Outway returns an error
 
 # Outway-TransactionLog-1
