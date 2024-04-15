@@ -5,11 +5,13 @@
 | Manager-SubmitContract-1       | Core       | Submit a Contract                                                                                                                   |
 | Manager-SubmitContract-2       | Core       | Submit a Contract without being a Peer on the Contract                                                                              |
 | Manager-SubmitContract-3       | Core       | Submit a Contract with a ServicePublicationGrant                                                                                    |
-| Manager-SubmitContract-4       | Delegation | Submit a Contract with a DelegatedServicePublicationGrant                                                                           |
-| Manager-SubmitContract-5       | Delegation | Submit a Contract with a DelegatedServiceConnectionGrant                                                                            |
-| Manager-SubmitContract-6       | Core       | Submit a Contract with a ServicePublicationGrant combined with any another grant                                                    |
-| Manager-SubmitContract-7       | Core       | Submit a Contract with a Group ID that does not match with the Group ID of the receiving Manager                                    |
-| Manager-SubmitContract-8       | Core       | Submit a Contract with a Contract Content hash where the Hash Algorithm in the Contract Content hash or Grant Hash is not supported |
+| Manager-SubmitContract-4       | Core       | Submit a Contract with a DelegatedServicePublicationGrant                                                                           |
+| Manager-SubmitContract-5       | Core       | Submit a Contract with a DelegatedServiceConnectionGrant                                                                            |
+| Manager-SubmitContract-6       | Core       | Submit a Contract with a ServiceConnectionGrant containing a Delegated Service                                                      |
+| Manager-SubmitContract-7       | Core       | Submit a Contract with a DelegatedServiceConnectionGrant containing a Delegated Service                                             |
+| Manager-SubmitContract-8       | Core       | Submit a Contract with a ServicePublicationGrant combined with any another grant                                                    |
+| Manager-SubmitContract-9       | Core       | Submit a Contract with a Group ID that does not match with the Group ID of the receiving Manager                                    |
+| Manager-SubmitContract-10      | Core       | Submit a Contract with a Contract Content hash where the Hash Algorithm in the Contract Content hash or Grant Hash is not supported |
 | Manager-AcceptContract-1       | Core       | Place accept signature on a Contract                                                                                                |
 | Manager-AcceptContract-2       | Core       | Place accept signature on a Contract without being a Peer on the Contract                                                           |
 | Manager-AcceptContract-3       | Core       | Place accept signature which is not a valid JWS                                                                                     | 
@@ -79,19 +81,33 @@ Scenario: Submit a Contract
 When a Contract with a DelegatedServiceConnectionGrant is submitted by the Peer
 Then the Contract should be accepted
 
+
 # Manager-SubmitContract-6
+
+Scenario: Submit a Contract
+When a Contract with a ServiceConnectionGrant containing a Delegated Service is submitted by the Peer
+Then the Contract should be accepted
+
+
+# Manager-SubmitContract-7
+
+Scenario: Submit a Contract
+When a Contract with a DelegatedServiceConnectionGrant containing a Delegated Service is submitted by the Peer
+Then the Contract should be accepted
+
+# Manager-SubmitContract-8
 
 Scenario: Submit a Contract with a ServicePublicationGrant and any other Grant
 When a Contract is submitted by the Peer
 Then the Contract should be rejected
 
-# Manager-SubmitContract-7
+# Manager-SubmitContract-9
 
 Scenario: Submit a Contract with a Group ID that does not match with the Group ID of the receiving Manager
 When a Contract is submitted by the Peer
 Then the Contract should be rejected
 
-# Manager-SubmitContract-8
+# Manager-SubmitContract-10
 
 Scenario: Submit a Contract with a Contract Content hash where the Hash Algorithm in the Contract Content hash or Grant Hash is not supported
 When a Contract is submitted by the Peer
