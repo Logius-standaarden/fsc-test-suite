@@ -3,12 +3,12 @@
 | TestID                         | RFC        | Description                                                                                                                         |
 |--------------------------------|------------|-------------------------------------------------------------------------------------------------------------------------------------|
 | Manager-SubmitContract-1       | Core       | Submit a Contract with a ServiceConnectionGrant                                                                                     |
-| Manager-SubmitContract-2       | Core       | Submit a Contract without being a Peer on the Contract                                                                              |
-| Manager-SubmitContract-3       | Core       | Submit a Contract with a ServicePublicationGrant                                                                                    |
-| Manager-SubmitContract-4       | Core       | Submit a Contract with a DelegatedServicePublicationGrant                                                                           |
-| Manager-SubmitContract-5       | Core       | Submit a Contract with a DelegatedServiceConnectionGrant                                                                            |
-| Manager-SubmitContract-6       | Core       | Submit a Contract with a ServiceConnectionGrant containing a Delegated Service                                                      |
-| Manager-SubmitContract-7       | Core       | Submit a Contract with a DelegatedServiceConnectionGrant containing a Delegated Service                                             |
+| Manager-SubmitContract-2       | Core       | Submit a Contract with a ServicePublicationGrant                                                                                    |
+| Manager-SubmitContract-3       | Core       | Submit a Contract with a DelegatedServicePublicationGrant                                                                           |
+| Manager-SubmitContract-4       | Core       | Submit a Contract with a DelegatedServiceConnectionGrant                                                                            |
+| Manager-SubmitContract-5       | Core       | Submit a Contract with a ServiceConnectionGrant containing a Delegated Service                                                      |
+| Manager-SubmitContract-6       | Core       | Submit a Contract with a DelegatedServiceConnectionGrant containing a Delegated Service                                             |
+| Manager-SubmitContract-7       | Core       | Submit a Contract without being a Peer on the Contract                                                                              |
 | Manager-SubmitContract-8       | Core       | Submit a Contract with a ServicePublicationGrant combined with any another grant                                                    |
 | Manager-SubmitContract-9       | Core       | Submit a Contract with a Group ID that does not match with the Group ID of the receiving Manager                                    |
 | Manager-SubmitContract-10      | Core       | Submit a Contract with a Contract Content hash where the Hash Algorithm in the Contract Content hash or Grant Hash is not supported |
