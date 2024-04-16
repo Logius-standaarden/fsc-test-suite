@@ -2,7 +2,7 @@
 
 | TestID                         | RFC        | Description                                                                                                                         |
 |--------------------------------|------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Manager-SubmitContract-1       | Core       | Submit a Contract                                                                                                                   |
+| Manager-SubmitContract-1       | Core       | Submit a Contract with a ServiceConnectionGrant                                                                                     |
 | Manager-SubmitContract-2       | Core       | Submit a Contract without being a Peer on the Contract                                                                              |
 | Manager-SubmitContract-3       | Core       | Submit a Contract with a ServicePublicationGrant                                                                                    |
 | Manager-SubmitContract-4       | Core       | Submit a Contract with a DelegatedServicePublicationGrant                                                                           |
