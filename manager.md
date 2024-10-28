@@ -1,55 +1,63 @@
 # Overview
 
-| TestID                         | RFC        | Description                                                                                                                         |
-|--------------------------------|------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Manager-SubmitContract-1       | Core       | Submit a Contract with a ServiceConnectionGrant                                                                                     |
-| Manager-SubmitContract-2       | Core       | Submit a Contract with a ServicePublicationGrant                                                                                    |
-| Manager-SubmitContract-3       | Core       | Submit a Contract with a DelegatedServicePublicationGrant                                                                           |
-| Manager-SubmitContract-4       | Core       | Submit a Contract with a DelegatedServiceConnectionGrant                                                                            |
-| Manager-SubmitContract-5       | Core       | Submit a Contract with a ServiceConnectionGrant containing a Delegated Service                                                      |
-| Manager-SubmitContract-6       | Core       | Submit a Contract with a DelegatedServiceConnectionGrant containing a Delegated Service                                             |
-| Manager-SubmitContract-7       | Core       | Submit a Contract without being a Peer on the Contract                                                                              |
-| Manager-SubmitContract-8       | Core       | Submit a Contract with a ServicePublicationGrant combined with any another grant                                                    |
-| Manager-SubmitContract-9       | Core       | Submit a Contract with a Group ID that does not match with the Group ID of the receiving Manager                                    |
-| Manager-SubmitContract-10      | Core       | Submit a Contract with a Contract Content hash where the Hash Algorithm in the Contract Content hash or Grant Hash is not supported |
-| Manager-AcceptContract-1       | Core       | Place accept signature on a Contract                                                                                                |
-| Manager-AcceptContract-2       | Core       | Place accept signature on a Contract without being a Peer on the Contract                                                           |
-| Manager-AcceptContract-3       | Core       | Place accept signature which is not a valid JWS                                                                                     | 
-| Manager-AcceptContract-4       | Core       | Place an accept signature of which the content hash does not match the contract content you are accepting                           |
-| Manager-AcceptContract-5       | Core       | Place accept signature on a Contract with a signature type that is not accept                                                       |
-| Manager-AcceptContract-6       | Core       | The hash in the request URL does not match with the contract hash of the contract in the request body                               |
-| Manager-AcceptContract-7       | Core       | Place accept signature with unsupported algorithm on a Contract                                                                     |
-| Manager-RejectContract-1       | Core       | Place reject signature on a Contract                                                                                                |
-| Manager-RejectContract-2       | Core       | Place reject signature on a Contract without being a Peer on the Contract                                                           |
-| Manager-RejectContract-3       | Core       | Place reject signature which is not a valid JWS                                                                                     | 
-| Manager-RejectContract-4       | Core       | Place a reject signature of which the content hash does not match the contract content you are rejecting                            |
-| Manager-RejectContract-5       | Core       | Place reject signature on a Contract with a signature type that is not reject                                                       |
-| Manager-RejectContract-6       | Core       | The hash in the request URL does not match with the contract hash of the contract in the request body                               |
-| Manager-RejectContract-7       | Core       | Place reject signature with unsupported algorithm on a Contract                                                                     |
-| Manager-RevokeContract-1       | Core       | Place revoke signature on a Contract                                                                                                |
-| Manager-RevokeContract-2       | Core       | Place revoke signature on a Contract without being a Peer on the Contract                                                           |
-| Manager-RevokeContract-3       | Core       | Place revoke signature which is not a valid JWS                                                                                     | 
-| Manager-RevokeContract-4       | Core       | Place a revoke signature of which the content hash does not match the contract content you are revoking                             |
-| Manager-RevokeContract-5       | Core       | Place revoke signature on a Contract with a signature type that is not revoke                                                       |
-| Manager-RevokeContract-6       | Core       | The hash in the request URL does not match with the contract hash of the contract in the request body                               |
-| Manager-RevokeContract-7       | Core       | Place revoke signature with unsupported algorithm on a Contract                                                                     |
-| Manager-Contracts-1            | Core       | List Contracts                                                                                                                      |
-| Manager-Contracts-2            | Core       | Do not list Contracts which do not contain the Peer                                                                                 |
-| Manager-GetToken-1             | Core       | Request access token with a valid Contract                                                                                          |
-| Manager-GetToken-2             | Core       | Request access token without a valid Contract                                                                                       |
-| Manager-GetToken-3             | Core       | Request access token when the Contract has been revoked                                                                             |
-| Manager-GetToken-4             | Core       | Request access token with a Grant Hash that is in a invalid format                                                                  |
-| Manager-GetToken-5             | Core       | Request access token with an grant type that is not client_credentials                                                              |
-| Manager-GetToken-6             | Delegation | Request access token with a valid Contract containing a DelegatedServiceConnectionGrant                                             |
-| Manager-GetToken-7             | Delegation | Request access token for a Service offered on behalf of a another Peer                                                              |
-| Manager-GetToken-8             | Core       | Request access token with a missing client_id                                                                                       |
-| Manager-GetToken-9             | Core       | Request access token with a invalid client_id                                                                                       |
-| Manager-PeerInfo-1             | Core       | Get Peer information                                                                                                                |
-| Manager-Peers-1                | Core       | List Peers that are known by the manager (via announcement or submitting contracts)                                                 |
-| Manager-Services-1             | Core       | List Services with a valid Contract containing a ServicePublicationGrant                                                            |
-| Manager-TransactionLogRecord-1 | Logging    | List Transaction Log records                                                                                                        |
-| Manager-Port-1                 | Core       | Accept request on port 443 or 8443                                                                                                  |
-| Manager-JSONWebKeySet-1        | Core       | List keys used to sign signatures and/or access token                                                                               |
+| TestID                         | RFC            | Description                                                                                                                         |
+|--------------------------------|----------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| Manager-SubmitContract-1       | Core           | Submit a Contract with a ServiceConnectionGrant                                                                                     |
+| Manager-SubmitContract-2       | Core           | Submit a Contract with a ServicePublicationGrant                                                                                    |
+| Manager-SubmitContract-3       | Core           | Submit a Contract with a DelegatedServicePublicationGrant                                                                           |
+| Manager-SubmitContract-4       | Core           | Submit a Contract with a DelegatedServiceConnectionGrant                                                                            |
+| Manager-SubmitContract-5       | Core           | Submit a Contract with a ServiceConnectionGrant containing a Delegated Service                                                      |
+| Manager-SubmitContract-6       | Core           | Submit a Contract with a DelegatedServiceConnectionGrant containing a Delegated Service                                             |
+| Manager-SubmitContract-7       | Core           | Submit a Contract without being a Peer on the Contract                                                                              |
+| Manager-SubmitContract-8       | Core           | Submit a Contract with a ServicePublicationGrant combined with any another grant                                                    |
+| Manager-SubmitContract-9       | Core           | Submit a Contract with a Group ID that does not match with the Group ID of the receiving Manager                                    |
+| Manager-SubmitContract-10      | Core           | Submit a Contract with a Contract Content hash where the Hash Algorithm in the Contract Content hash or Grant Hash is not supported |
+| Manager-SubmitContract-11      | Properties     | Submit a Contract with a ServiceConnectionGrant containing Properties                                                               |
+| Manager-SubmitContract-12      | Properties     | Submit a Contract with a ServicePublicationGrant containing Properties                                                              |
+| Manager-SubmitContract-13      | Properties     | Submit a Contract with a DelegatedServicePublicationGrant containing Properties                                                     |
+| Manager-SubmitContract-14      | Properties     | Submit a Contract with a DelegatedServiceConnectionGrant containing Properties                                                      |
+| Manager-SubmitContract-15      | Properties     | Submit a Contract with a PeerRegistrationGrant containing Properties                                                                |
+| Manager-SubmitContract-16      | Regulated Area | Submit a Contract with a PeerRegistrationGrant                                                                                      |
+| Manager-AcceptContract-1       | Core           | Place accept signature on a Contract                                                                                                |
+| Manager-AcceptContract-2       | Core           | Place accept signature on a Contract without being a Peer on the Contract                                                           |
+| Manager-AcceptContract-3       | Core           | Place accept signature which is not a valid JWS                                                                                     |
+| Manager-AcceptContract-4       | Core           | Place an accept signature of which the content hash does not match the contract content you are accepting                           |
+| Manager-AcceptContract-5       | Core           | Place accept signature on a Contract with a signature type that is not accept                                                       |
+| Manager-AcceptContract-6       | Core           | The hash in the request URL does not match with the contract hash of the contract in the request body                               |
+| Manager-AcceptContract-7       | Core           | Place accept signature with unsupported algorithm on a Contract                                                                     |
+| Manager-RejectContract-1       | Core           | Place reject signature on a Contract                                                                                                |
+| Manager-RejectContract-2       | Core           | Place reject signature on a Contract without being a Peer on the Contract                                                           |
+| Manager-RejectContract-3       | Core           | Place reject signature which is not a valid JWS                                                                                     |
+| Manager-RejectContract-4       | Core           | Place a reject signature of which the content hash does not match the contract content you are rejecting                            |
+| Manager-RejectContract-5       | Core           | Place reject signature on a Contract with a signature type that is not reject                                                       |
+| Manager-RejectContract-6       | Core           | The hash in the request URL does not match with the contract hash of the contract in the request body                               |
+| Manager-RejectContract-7       | Core           | Place reject signature with unsupported algorithm on a Contract                                                                     |
+| Manager-RevokeContract-1       | Core           | Place revoke signature on a Contract                                                                                                |
+| Manager-RevokeContract-2       | Core           | Place revoke signature on a Contract without being a Peer on the Contract                                                           |
+| Manager-RevokeContract-3       | Core           | Place revoke signature which is not a valid JWS                                                                                     |
+| Manager-RevokeContract-4       | Core           | Place a revoke signature of which the content hash does not match the contract content you are revoking                             |
+| Manager-RevokeContract-5       | Core           | Place revoke signature on a Contract with a signature type that is not revoke                                                       |
+| Manager-RevokeContract-6       | Core           | The hash in the request URL does not match with the contract hash of the contract in the request body                               |
+| Manager-RevokeContract-7       | Core           | Place revoke signature with unsupported algorithm on a Contract                                                                     |
+| Manager-Contracts-1            | Core           | List Contracts                                                                                                                      |
+| Manager-Contracts-2            | Core           | Do not list Contracts which do not contain the Peer                                                                                 |
+| Manager-GetToken-1             | Core           | Request access token with a valid Contract                                                                                          |
+| Manager-GetToken-2             | Core           | Request access token without a valid Contract                                                                                       |
+| Manager-GetToken-3             | Core           | Request access token when the Contract has been revoked                                                                             |
+| Manager-GetToken-4             | Core           | Request access token with a Grant Hash that is in a invalid format                                                                  |
+| Manager-GetToken-5             | Core           | Request access token with an grant type that is not client_credentials                                                              |
+| Manager-GetToken-6             | Delegation     | Request access token with a valid Contract containing a DelegatedServiceConnectionGrant                                             |
+| Manager-GetToken-7             | Delegation     | Request access token for a Service offered on behalf of a another Peer                                                              |
+| Manager-GetToken-8             | Core           | Request access token with a missing client_id                                                                                       |
+| Manager-GetToken-9             | Core           | Request access token with a invalid client_id                                                                                       |
+| Manager-GetToken-10            | Properties     | Request access token with a valid Contract                                                                                          |
+| Manager-PeerInfo-1             | Core           | Get Peer information                                                                                                                |
+| Manager-Peers-1                | Core           | List Peers that are known by the manager (via announcement or submitting contracts)                                                 |
+| Manager-Services-1             | Core           | List Services with a valid Contract containing a ServicePublicationGrant                                                            |
+| Manager-TransactionLogRecord-1 | Logging        | List Transaction Log records                                                                                                        |
+| Manager-Port-1                 | Core           | Accept request on port 443 or 8443                                                                                                  |
+| Manager-JSONWebKeySet-1        | Core           | List keys used to sign signatures and/or access token                                                                               |
+| Manager-Members-1              | Regulated Area | List Members of the Regulated Area                                                                                                  |
 
 # Manager-SubmitContract-1
 
@@ -112,6 +120,42 @@ Then the Contract should be rejected
 Scenario: Submit a Contract with a Contract Content hash where the Hash Algorithm in the Contract Content hash or Grant Hash is not supported
 When a Contract is submitted by the Peer
 Then the Contract should be rejected
+
+# Manager-SubmitContract-11
+
+Scenario: Submit a Contract
+When a Contract with a ServiceConnectionGrant containing Properties is submitted by the Peer
+Then the Contract should be accepted
+
+# Manager-SubmitContract-12
+
+Scenario: Submit a Contract
+When a Contract with a ServicePublicationGrant containing Properties is submitted by the Peer
+Then the Contract should be accepted
+
+# Manager-SubmitContract-13
+
+Scenario: Submit a Contract
+When a Contract with a DelegatedServicePublicationGrant containing Properties is submitted by the Peer
+Then the Contract should be accepted
+
+# Manager-SubmitContract-14
+
+Scenario: Submit a Contract
+When a Contract with a DelegatedServiceConnectionGrant containing Properties is submitted by the Peer
+Then the Contract should be accepted
+
+# Manager-SubmitContract-15
+
+Scenario: Submit a Contract
+Submit a Contract with a PeerRegistrationGrant containing Properties is submitted by the Peer
+Then the Contract should be accepted
+
+# Manager-SubmitContract-16
+
+Scenario: Submit a Contract
+When a Contract with a PeerRegistrationGrant is submitted by the Peer
+Then the Contract should be accepted
 
 # Manager-AcceptContract-1
 
@@ -332,6 +376,13 @@ Given a valid contract exists with a ServiceConnectionGrant containing the Peer
 When the Peer requests an access token providing an invalid client_id in the request
 Then an access token request should be rejected
 
+# Manager-GetToken-10
+
+Scenario: Request access token with a valid Contract
+Given a valid Contract exists with a ServiceConnectionGrant containing the Peer and Properties
+When the Peer requests an access token
+Then the access token should be returned containing a `prp` claim
+
 # Manager-PeerInfo-1
 
 Scenario: Get Peer information  
@@ -370,3 +421,10 @@ Then the Manager should respond
 Scenario: List keys used to sign signatures and/or access token
 When the JSON WebKey Set endpoint is called 
 Then the keys used by the Peer should be returned
+
+# Manager-Members-1
+
+Scenario: List Members
+Given there is at least one valid Contract containing a PeerRegistrationGrant for the Regulated Area
+When the members endpoint is called
+Then the Members of the Regulated Area should be returned
