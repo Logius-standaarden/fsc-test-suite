@@ -20,7 +20,7 @@
 | Manager-AcceptContract-4       | Core       | Place an accept signature of which the content hash does not match the contract content you are accepting |
 | Manager-AcceptContract-5       | Core       | Place accept signature on a Contract with a signature type that is not accept                             |
 | Manager-AcceptContract-6       | Core       | The hash in the request URL does not match with the contract hash of the contract in the request body     |
-| Manager-AcceptContract-7       | Core       | Place accept signature with unsupported algorithm on a Contract                                           |
+| Manager-AcceptContract-7       | Core       | Place accept signature signed using an unsupported algorithm on a Contract                                |
 | Manager-AcceptContract-8       | Core       | Place accept signature signed using an RSA algorithm on a Contract                                        |
 | Manager-AcceptContract-9       | Core       | Place an accept Signature signed using an ECDSA algorithm on a Contract                                   |
 | Manager-RejectContract-1       | Core       | Place reject signature on a Contract                                                                      |
@@ -172,9 +172,9 @@ Then the signature should be rejected
 
 # Manager-AcceptContract-7
 
-Scenario: Place accept signature with unsupported algorithm on a Contract    
-When the Peer submits an accept signature using a hash with an unsupported algorithm
-Then the signature should be rejected
+Scenario: Place accept signature signed using an unsupported algorithm on a Contract    
+When the Peer submits an accept signature using an unsupported algorithm
+Then the Manager should return a 422 and the Signature should not be added
 
 # Manager-AcceptContract-8
 
