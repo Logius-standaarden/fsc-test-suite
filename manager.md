@@ -63,41 +63,39 @@ Then the Contract should be accepted
 
 # Manager-SubmitContract-2
 
-Scenario: Submit a Contract without being a Peer on the Contract
-When a Contract is submitted by the Peer which does not include the Peer
-Then the Contract should be rejected
-
-# Manager-SubmitContract-3
-
 Scenario: Submit a Contract
 When a Contract with a ServicePublicationGrant is submitted by the Peer
 Then the Contract should be accepted
 
-# Manager-SubmitContract-4
+# Manager-SubmitContract-3
 
 Scenario: Submit a Contract
 When a Contract with a DelegatedServicePublicationGrant is submitted by the Peer
 Then the Contract should be accepted
 
-# Manager-SubmitContract-5
+# Manager-SubmitContract-4
 
 Scenario: Submit a Contract
 When a Contract with a DelegatedServiceConnectionGrant is submitted by the Peer
 Then the Contract should be accepted
 
-
-# Manager-SubmitContract-6
+# Manager-SubmitContract-5
 
 Scenario: Submit a Contract
 When a Contract with a ServiceConnectionGrant containing a Delegated Service is submitted by the Peer
 Then the Contract should be accepted
 
-
-# Manager-SubmitContract-7
+# Manager-SubmitContract-6
 
 Scenario: Submit a Contract
 When a Contract with a DelegatedServiceConnectionGrant containing a Delegated Service is submitted by the Peer
 Then the Contract should be accepted
+
+# Manager-SubmitContract-7
+
+Scenario: Submit a Contract without being a Peer on the Contract
+When a Contract is submitted by a Peer which is not present on the Contract
+Then the Contract should be rejected
 
 # Manager-SubmitContract-8
 
