@@ -44,10 +44,11 @@
 | Manager-GetToken-3             | Core       | Request access token when the Contract has been revoked                                                   |
 | Manager-GetToken-4             | Core       | Request access token with a Grant Hash that is in a invalid format                                        |
 | Manager-GetToken-5             | Core       | Request access token with an grant type that is not client_credentials                                    |
-| Manager-GetToken-6             | Delegation | Request access token with a valid Contract containing a DelegatedServiceConnectionGrant                   |
-| Manager-GetToken-7             | Delegation | Request access token for a Service offered on behalf of a another Peer                                    |
+| Manager-GetToken-6             | Core       | Request access token with a valid Contract containing a DelegatedServiceConnectionGrant                   |
+| Manager-GetToken-7             | Core       | Request access token for a Service offered on behalf of a another Peer                                    |
 | Manager-GetToken-8             | Core       | Request access token with a missing client_id                                                             |
 | Manager-GetToken-9             | Core       | Request access token with a invalid client_id                                                             |
+| Manager-GetToken-10            | Core       | Request access token with a valid Contract containing properties                                          |
 | Manager-PeerInfo-1             | Core       | Get Peer information                                                                                      |
 | Manager-Peers-1                | Core       | List Peers that are known by the manager (via announcement or submitting contracts)                       |
 | Manager-Services-1             | Core       | List Services with a valid Contract containing a ServicePublicationGrant                                  |
@@ -357,6 +358,21 @@ Scenario: Request access token with an invalid client_id in the request
 Given a valid contract exists with a ServiceConnectionGrant containing the Peer
 When the Peer requests an access token providing an invalid client_id in the request
 Then an access token request should be rejected
+
+# Manager-GetToken-10
+
+Scenario: Request access token with a valid Contract containing properties
+Given a valid Contract exists with a ServiceConnectionGrant containing the Peer and properties
+When the Peer requests an access token
+Then the access token with the properties should be returned
+
+
+# Manager-GetToken-11
+
+Scenario: Request access token with a valid Contract containing properties
+Given a valid Contract exists with a DelegatedServiceConnectionGrant containing the Peer and properties
+When the Peer requests an access token
+Then the access token with the properties should be returned
 
 # Manager-PeerInfo-1
 
