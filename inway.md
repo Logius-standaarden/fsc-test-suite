@@ -11,8 +11,8 @@
 | Inway-TransactionLog-1   | Logging             | Create a TransactionLog record for a received request                                       |
 | Inway-TransactionLog-2   | Logging             | Preserve TransactionID                                                                      |
 | Inway-TransactionLog-3   | Logging             | Reject request without a TransactionID                                                      |
-| Inway-TransactionLog-4   | Logging, Delegation | Create a TransactionLog record for a request made on behalf of another Peer                 |
-| Inway-TransactionLog-5   | Logging, Delegation | Create a TransactionLog record for a request to a Service offered on behalf of another Peer |
+| Inway-TransactionLog-4   | Logging             | Create a TransactionLog record for a request made on behalf of another Peer                 |
+| Inway-TransactionLog-5   | Logging             | Create a TransactionLog record for a request to a Service offered on behalf of another Peer |
 | Inway-TransactionLog-6   | Logging             | An error occurred while writing to the transaction log                                      |
 | Inway-Port-1             | Core                | Accept request on port 443 or 8443                                                          |
 

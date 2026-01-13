@@ -39,15 +39,21 @@
 | Manager-RevokeContract-7       | Core       | Place revoke signature with unsupported algorithm on a Contract                                           |
 | Manager-Contracts-1            | Core       | List Contracts                                                                                            |
 | Manager-Contracts-2            | Core       | Do not list Contracts which do not contain the Peer                                                       |
+| Manager-Services-1             | Core       | List Services                                                                                             |
+| Manager-Services-2             | Core       | List Services offered on behalf of another Peer                                                           |
+| Manager-Services-3             | Core       | List Services with properties                                                                             |
+| Manager-Services-4             | Core       | List Services with properties offered on behalf of another Peer                                           |
 | Manager-GetToken-1             | Core       | Request access token with a valid Contract                                                                |
 | Manager-GetToken-2             | Core       | Request access token without a valid Contract                                                             |
 | Manager-GetToken-3             | Core       | Request access token when the Contract has been revoked                                                   |
 | Manager-GetToken-4             | Core       | Request access token with a Grant Hash that is in a invalid format                                        |
 | Manager-GetToken-5             | Core       | Request access token with an grant type that is not client_credentials                                    |
-| Manager-GetToken-6             | Delegation | Request access token with a valid Contract containing a DelegatedServiceConnectionGrant                   |
-| Manager-GetToken-7             | Delegation | Request access token for a Service offered on behalf of a another Peer                                    |
+| Manager-GetToken-6             | Core       | Request access token with a valid Contract containing a DelegatedServiceConnectionGrant                   |
+| Manager-GetToken-7             | Core       | Request access token for a Service offered on behalf of a another Peer                                    |
 | Manager-GetToken-8             | Core       | Request access token with a missing client_id                                                             |
 | Manager-GetToken-9             | Core       | Request access token with a invalid client_id                                                             |
+| Manager-GetToken-10            | Core       | Request access token with a valid Contract containing a ServiceConnectionGrant with properties            |
+| Manager-GetToken-11            | Core       | Request access token with a valid Contract containing a DelegatedServiceConnectionGrant with properties   |
 | Manager-PeerInfo-1             | Core       | Get Peer information                                                                                      |
 | Manager-Peers-1                | Core       | List Peers that are known by the manager (via announcement or submitting contracts)                       |
 | Manager-Services-1             | Core       | List Services with a valid Contract containing a ServicePublicationGrant                                  |
@@ -294,6 +300,34 @@ Given a valid Contract exists with a ServiceConnectionGrant not containing the P
 When the Contract endpoint is called by the Peer
 Then the Contract with the ServiceConnection should not be returned
 
+# Manager-Services-1
+
+Scenario: List Services          
+Given a valid Contract exists with a ServicePublicationGrant containing the Peer as Service provider
+When the Services endpoint is called by the Peer
+Then the Service specified in the ServicePublicationGrant is returned
+
+# Manager-Services-2
+
+Scenario: List Services offered on behalf of another Peer        
+Given a valid Contract exists with a DelegatedServicePublicationGrant containing the Peer as Service provider
+When the Services endpoint is called by the Peer
+Then the Service specified in the DelegatedServicePublicationGrant is returned
+
+# Manager-Services-3
+
+Scenario: List Services with properties        
+Given a valid Contract exists with a ServicePublicationGrant with properties containing the Peer as Service provider
+When the Services endpoint is called by the Peer
+Then the Service including the properties specified in the ServicePublicationGrant is returned
+
+# Manager-Services-4
+
+Scenario: List Services with properties offered on behalf of another Peer        
+Given a valid Contract exists with a DelegatedServicePublicationGrant with properties containing the Peer as Service provider
+When the Services endpoint is called by the Peer
+Then the Service including the properties specified in the DelegatedServicePublicationGrant is returned
+
 # Manager-GetToken-1
 
 Scenario: Request access token with a valid Contract
@@ -357,6 +391,21 @@ Scenario: Request access token with an invalid client_id in the request
 Given a valid contract exists with a ServiceConnectionGrant containing the Peer
 When the Peer requests an access token providing an invalid client_id in the request
 Then an access token request should be rejected
+
+# Manager-GetToken-10
+
+Scenario: Request access token with a valid Contract containing properties
+Given a valid Contract exists with a ServiceConnectionGrant containing the Peer and properties
+When the Peer requests an access token
+Then the access token with the properties should be returned
+
+
+# Manager-GetToken-11
+
+Scenario: Request access token with a valid Contract containing properties
+Given a valid Contract exists with a DelegatedServiceConnectionGrant containing the Peer and properties
+When the Peer requests an access token
+Then the access token with the properties should be returned
 
 # Manager-PeerInfo-1
 
